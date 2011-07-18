@@ -6,7 +6,7 @@ Uses metal controllers to serve up required javascript.  For best performance, i
 
 == Version Dependencies
 
-*The latest versions of Mustache and Rails are not yet supported!*
+The latest versions of Mustache and Rails are *not yet supported*!
 
 Developed against the following versions:
 1. jquery 1.6.1
@@ -16,18 +16,7 @@ Developed against the following versions:
 
 == Installation
 
-From the mustache_i18n_rails directory:
-+rake install+
-
-_or_
-
-From github:
-+gem install mustache_i18n_rails+
-
-_or_
-
-Add +mustache_i18n_rails+ to your Gemfile, then:
-+bundle install+
+From the mustache_i18n_rails directory: +rake install+
 
 == Usage
 
@@ -57,17 +46,17 @@ javascript:
 
 ==== Key without Variable Interpolation
 
-{{# translate }}
-  pies.show.pie_flavor
-{{/ translate }}
+  {{# translate }}
+    pies.show.pie_flavor
+  {{/ translate }}
 
 ==== Key with Variable Interpolation
 
 This is assuming there is a +pie_remaining_pieces+ method which returns the number of remaining pieces of pie.
 
-{{# translate }}
-  pies.show.remaining_pieces, { "count": {{ pie_remaining_pieces }} }
-{{/ translate }}
+  {{# translate }}
+    pies.show.remaining_pieces, { "count": {{ pie_remaining_pieces }} }
+  {{/ translate }}
 
 == Roadmap
 
