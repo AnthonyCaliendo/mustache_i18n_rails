@@ -1,6 +1,79 @@
-= mustache_i18n
+= mustache_i18n_rails
 
-Description goes here.
+Adds translation support to mustache.rb for use in a Rails app.  Hooks into Rails I18n functionality, allowing seamless internationalization and localization support for mustache templates.
+
+Uses metal controllers to serve up required javascript.  For best performance, it is suggested that you use nginx, etc. to front requests to _javascripts/cache_.  If the file exists, have it served by the container; otherwise, have the request pass through to the Rails app.  This will ensure that files are only written to disk once per deploy.  In development, you will need to blow away your _javascripts/cache_ directory when you change your translation files.
+
+== Version Dependencies
+
+*The latest versions of Mustache and Rails are not yet supported!*
+
+Developed against the following versions:
+1. jquery 1.6.1
+2. mustache.rb 0.11.2
+3. mustache.js 0.3.0-dev
+4. rails 2.3.2
+
+== Installation
+
+From the mustache_i18n_rails directory:
++rake install+
+
+_or_
+
+From github:
++gem install mustache_i18n_rails+
+
+_or_
+
+Add +mustache_i18n_rails+ to your Gemfile, then:
++bundle install+
+
+== Usage
+
+Functionality attempts to stay as close to Rails' I18n functionality as possible, but there are some limitations.  Here are some highlights:
+1. The full key must be provided as a String.  Keys are nested under a global namespace defined by +Mustache::I18n.translation_root_key+ (default is +javascript+).
+2. Variables to be interpolated are passed as JSON.
+3. Pluralization (one/other) is handled by passing the +count+ variable (just as in Rails).
+
+You will need to make sure the javascripts for the translations and mustache extensions are loaded. 
+You can accomplish that by including the following helper method on your view:
++include_i18n_javascripts+
+
+== Example
+
+=== Locale yml File
+
+javascript:
+  pies:
+    show:
+      pie_flavor: Flavorness
+      remaining_pieces:
+        one:   OMFG, you only have one piece left!
+        other: LOL, you have {{count}} pieces left.
+
+
+=== Mustache Template
+
+==== Key without Variable Interpolation
+
+{{# translate }}
+  pies.show.pie_flavor
+{{/ translate }}
+
+==== Key with Variable Interpolation
+
+This is assuming there is a +pie_remaining_pieces+ method which returns the number of remaining pieces of pie.
+
+{{# translate }}
+  pies.show.remaining_pieces, { "count": {{ pie_remaining_pieces }} }
+{{/ translate }}
+
+== Roadmap
+
+1. Support time/date formatting
+2. Support latest version of mustache/rails
+3. Remove dependency on jquery
 
 == Contributing to mustache_i18n
  
