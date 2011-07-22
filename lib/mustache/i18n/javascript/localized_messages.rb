@@ -18,9 +18,9 @@ class Mustache::I18n::Javascript::LocalizedMessages < Mustache::I18n::Javascript
       translations  = flatten_translations I18n.translate(root_key, :locale => locale_and_root_key.first, :scope => Mustache::I18n.translation_root_key), root_key
 
       <<-JS
-        Mustache = Mustache || {};
-        Mustache.I18n = Mustache.I18n || {};
-        Mustache.I18n.messages = #{translations.to_json};
+        #{Mustache::I18n.javascript_namespace} = #{Mustache::I18n.javascript_namespace} || {};
+        #{Mustache::I18n.javascript_namespace}.I18n = #{Mustache::I18n.javascript_namespace}.I18n || {};
+        #{Mustache::I18n.javascript_namespace}.I18n.messages = #{translations.to_json};
       JS
     end
   end

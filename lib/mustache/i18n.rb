@@ -18,6 +18,14 @@ class Mustache
         @@translation_root_key = value
       end
 
+      def javascript_namespace
+        @@javascript_namespace ||= 'Mustache'
+      end
+
+      def javascript_namespace=(value)
+        @@javascript_namespace = value
+      end
+
     end
   end
 end

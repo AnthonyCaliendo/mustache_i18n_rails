@@ -1,6 +1,6 @@
-#{Mustache::I18n.javascript_namespace} = #{Mustache::I18n.javascript_namespace} || {};
+Mustache = Mustache || {};
 
-#{Mustache::I18n.javascript_namespace}.I18n = {
+Mustache.I18n = {
   messages: {},
 
   t: function(key) {
@@ -12,7 +12,7 @@
       key += (count == 1 ? '.one' : '.other');
     }
 
-    var translated = #{Mustache::I18n.javascript_namespace}.I18n.messages[key] || '';
+    var translated = Mustache.I18n.messages[key] || '';
 
     if (variables) {
       $.each(variables, function(key, value){
@@ -46,6 +46,6 @@ $.extend(Mustache, {
 Mustache.context_extensions['translate'] = function() {
    return function(content, func) {
      var args = func.call(func, content).trim().split(',');
-     return #{Mustache::I18n.javascript_namespace}.I18n.t(args.shift(), eval('(' + args.shift() + ')'));
+     return Mustache.I18n.t(args.shift(), eval('(' + args.shift() + ')'));
    };
 };

@@ -16,7 +16,7 @@ describe Mustache::I18n::Javascript::Tags do
 
   context 'with relevant url' do
     before :all do
-      @@javascript_file_contents = File.read(File.join(File.dirname(__FILE__), '../lib/mustache/i18n/javascript/mustache_i18n.js')).to_s
+      @@javascript_file_contents = read_javascript 'mustache_i18n.js'
     end
 
     before do
