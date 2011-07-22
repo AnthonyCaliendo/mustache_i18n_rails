@@ -21,7 +21,7 @@ From the mustache_i18n_rails directory: +rake install+
 == Usage
 
 Functionality attempts to stay as close to Rails' I18n functionality as possible, but there are some limitations.  Here are some highlights:
-1. The full key must be provided as a String.  Keys are nested under a global namespace defined by +Mustache::I18n.translation_root_key+ (default is +javascript+).
+1. The full key must be provided as a String.  Keys are nested under a global namespace defined by +Mustache::I18n.translation_root_key+ (default is +javascripts+).
 2. Variables to be interpolated are passed as JSON.
 3. Pluralization (one/other) is handled by passing the +count+ variable (just as in Rails).
 
@@ -64,7 +64,7 @@ This is assuming there is a +pie_remaining_pieces+ method which returns the numb
 2. Support latest version of mustache/rails
 3. Remove dependency on jquery
 
-== Contributing to mustache_i18n
+== Contributing to mustache_i18n_rails
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it

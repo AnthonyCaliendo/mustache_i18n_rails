@@ -11,7 +11,7 @@ class Mustache
 
       # The root key to be used for all javascript/mustache translations.
       def translation_root_key
-        @@translation_root_key ||= 'javascript'
+        @@translation_root_key ||= 'javascripts'
       end
 
       def translation_root_key=(value)
