@@ -20,7 +20,7 @@ class Mustache::I18n::Javascript::LocalizedMessages < Mustache::I18n::Javascript
       <<-JS
         #{Mustache::I18n.javascript_namespace} = #{Mustache::I18n.javascript_namespace} || {};
         #{Mustache::I18n.javascript_namespace}.I18n = #{Mustache::I18n.javascript_namespace}.I18n || {};
-        #{Mustache::I18n.javascript_namespace}.I18n.messages = #{translations.to_json};
+        $.extend(#{Mustache::I18n.javascript_namespace}.I18n.messages, #{translations.to_json});
       JS
     end
   end
